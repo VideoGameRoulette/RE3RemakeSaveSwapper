@@ -16,6 +16,7 @@ namespace RE3RemakeSaveSwapper
         public string SaveFolder { get; private set; }
         public int SaveCount { get; private set; }
         public int BackupSaveCount { get; private set; }
+        public int BackupDirCount { get; private set; }
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
 
@@ -58,6 +59,7 @@ namespace RE3RemakeSaveSwapper
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string srtVersion = string.Format("v{0}", fvi.FileVersion.ToString());
             this.Text += string.Format(" - {0}", srtVersion);
+            GetBackupDirectories();
         }
 
         //TIMER EVENTS
@@ -81,18 +83,28 @@ namespace RE3RemakeSaveSwapper
         {
             if (Directory.Exists(BackupFolder))
             {
-                CopyAllFiles(SaveFolder, $"{BackupFolder}{Difficulty.Text}");
+                CopyAllFiles(SaveFolder, $"{BackupFolder}{SaveSets.Text}");
             }
             else
             {
                 Directory.CreateDirectory(BackupFolder);
-                CopyAllFiles(SaveFolder, $"{BackupFolder}{Difficulty.Text}");
+                CopyAllFiles(SaveFolder, $"{BackupFolder}{SaveSets.Text}");
             }
         }
 
         private void ImportSaves_Click(object sender, System.EventArgs e)
         {
-            CopyAllFiles($"{BackupFolder}{Difficulty.Text}", SaveFolder);
+            CopyAllFiles($"{BackupFolder}{SaveSets.Text}", SaveFolder);
+        }
+
+        private void SwapSave_Click(object sender, System.EventArgs e)
+        {
+            var file = $"{BackupFolder}{SaveSets.Text}\\{BackupSavesList.Text}";
+            var file2 = $"{SaveFolder}\\{SteamSavesList.Text}";
+            var source = $"{BackupFolder}{SaveSets.Text}";
+            var destination = SaveFolder;
+            File.Copy(file, file2.Replace(source, destination), true);
+            //MessageBox.Show($"File: {BackupSavesList.Text} copied to Destination: {SteamSavesList.Text}");
         }
 
         private void NG_Click(object sender, System.EventArgs e)
@@ -200,6 +212,15 @@ namespace RE3RemakeSaveSwapper
             }
         }
 
+        void GetBackupDirectories()
+        {
+            SaveSets.Items.Clear();
+            foreach (var dir in Directory.GetDirectories(BackupFolder))
+            {
+                SaveSets.Items.Add(Path.GetFileName(dir));
+            }
+        }
+
         void BackupNGP(string sourceDir, string targetDir)
         {
             if (!Directory.Exists(targetDir))
@@ -225,7 +246,17 @@ namespace RE3RemakeSaveSwapper
             
             foreach (var file in Directory.GetFiles(sourceDir))
             {
-                File.Copy(file, file.Replace(sourceDir, targetDir), true);
+                var data = $"{sourceDir}\\data00-1.bin";
+                var autosave = $"{sourceDir}\\data000.bin";
+                if (file == data || file == autosave)
+                {
+                    continue;
+                }
+                else
+                {
+                    File.Copy(file, file.Replace(sourceDir, targetDir), true);
+                }
+                
             }
             UpdateSteamList();
             UpdateBackupList();
@@ -236,8 +267,30 @@ namespace RE3RemakeSaveSwapper
         {
             if (SaveFolder != null)
             {
-                int check1 = Directory.GetFiles(SaveFolder).Length;
-                int check2 = Directory.GetFiles($"{BackupFolder}{Difficulty.Text}").Length;
+                int check1 = 0;
+                int check2 = 0;
+                int check3 = Directory.GetDirectories(BackupFolder).Length;
+
+                if (!Directory.Exists(SaveFolder))
+                {
+                    return;
+                }
+
+                else if (Directory.Exists(SaveFolder))
+                {
+                    check1 = Directory.GetFiles(SaveFolder).Length;
+                }
+
+                if (!Directory.Exists($"{BackupFolder}{SaveSets.Text}"))
+                {
+                    return;
+                }
+
+                else if (Directory.Exists($"{BackupFolder}{SaveSets.Text}"))
+                {
+                    check2 = Directory.GetFiles($"{BackupFolder}{SaveSets.Text}").Length;
+                }
+
                 if (check1 != SaveCount)
                 {
                     SaveCount = check1;
@@ -248,6 +301,12 @@ namespace RE3RemakeSaveSwapper
                 {
                     BackupSaveCount = check2;
                     UpdateBackupList();
+                }
+
+                else if (check3 != BackupDirCount)
+                {
+                    BackupDirCount = check3;
+                    GetBackupDirectories();
                 }
             }
         }
@@ -264,7 +323,8 @@ namespace RE3RemakeSaveSwapper
 
                 foreach (FileInfo file in files)
                 {
-                    SteamSavesList.Items.Add(file.Name);
+                    if (file.Name == "data00-1.bin" || file.Name == "data000.bin") { continue; }
+                    else { SteamSavesList.Items.Add(file.Name); }
                 }
             }
 
@@ -277,10 +337,10 @@ namespace RE3RemakeSaveSwapper
 
         void UpdateBackupList()
         {
-            if (Directory.Exists($"{BackupFolder}{Difficulty.Text}"))
+            if (Directory.Exists($"{BackupFolder}{SaveSets.Text}"))
             {
                 BackupSavesList.Items.Clear();
-                DirectoryInfo di = new DirectoryInfo($"{BackupFolder}{Difficulty.Text}");
+                DirectoryInfo di = new DirectoryInfo($"{BackupFolder}{SaveSets.Text}");
                 FileInfo[] files = di.GetFiles("*.bin");
 
                 foreach (FileInfo file in files)
@@ -289,16 +349,17 @@ namespace RE3RemakeSaveSwapper
                 }
 
                 ImportSaves.Enabled = true;
+                SwapSave.Enabled = true;
             }
 
             else
             {
                 BackupSavesList.Items.Clear();
                 ImportSaves.Enabled = false;
+                SwapSave.Enabled = false;
             }
 
         }
 
-        
     }
 }

@@ -35,7 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.Difficulty = new System.Windows.Forms.ComboBox();
+            this.SaveSets = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.BackupSavesList = new System.Windows.Forms.ListBox();
             this.ImportSaves = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.SwapSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -69,7 +70,7 @@
             // 
             // UserSaveDir
             // 
-            this.UserSaveDir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.UserSaveDir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.UserSaveDir.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserSaveDir.Enabled = false;
             this.UserSaveDir.ForeColor = System.Drawing.Color.White;
@@ -80,17 +81,19 @@
             // 
             // SteamSavesList
             // 
-            this.SteamSavesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.SteamSavesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SteamSavesList.BackColor = System.Drawing.Color.Black;
+            this.SteamSavesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SteamSavesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SteamSavesList.ForeColor = System.Drawing.Color.White;
             this.SteamSavesList.FormattingEnabled = true;
             this.SteamSavesList.Location = new System.Drawing.Point(3, 3);
             this.SteamSavesList.Name = "SteamSavesList";
-            this.SteamSavesList.Size = new System.Drawing.Size(246, 286);
+            this.SteamSavesList.Size = new System.Drawing.Size(246, 285);
             this.SteamSavesList.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -102,7 +105,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(528, 419);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(528, 417);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panel2
@@ -111,7 +114,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(267, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(258, 413);
+            this.panel2.Size = new System.Drawing.Size(258, 411);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -126,7 +129,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(258, 413);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(258, 411);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -134,7 +137,7 @@
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.74703F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.25296F));
-            this.tableLayoutPanel6.Controls.Add(this.Difficulty, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.SaveSets, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -144,67 +147,63 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(252, 27);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
-            // Difficulty
+            // SaveSets
             // 
-            this.Difficulty.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Difficulty.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Difficulty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.Difficulty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Difficulty.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Difficulty.ForeColor = System.Drawing.Color.White;
-            this.Difficulty.FormattingEnabled = true;
-            this.Difficulty.Items.AddRange(new object[] {
-            "ASSIST",
-            "STANDARD",
-            "HARDCORE",
-            "NIGHTMARE",
-            "INFERNO"});
-            this.Difficulty.Location = new System.Drawing.Point(3, 3);
-            this.Difficulty.Name = "Difficulty";
-            this.Difficulty.Size = new System.Drawing.Size(246, 21);
-            this.Difficulty.TabIndex = 0;
-            this.Difficulty.Text = "ASSIST";
+            this.SaveSets.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.SaveSets.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.SaveSets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.SaveSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveSets.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SaveSets.ForeColor = System.Drawing.Color.White;
+            this.SaveSets.FormattingEnabled = true;
+            this.SaveSets.Location = new System.Drawing.Point(3, 3);
+            this.SaveSets.Name = "SaveSets";
+            this.SaveSets.Size = new System.Drawing.Size(246, 21);
+            this.SaveSets.TabIndex = 0;
+            this.SaveSets.Text = "ASSIST";
             // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.BackupSavesList, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.ImportSaves, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.SwapSave, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.ImportSaves, 0, 2);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 36);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(252, 374);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(252, 372);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // BackupSavesList
             // 
-            this.BackupSavesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.BackupSavesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BackupSavesList.BackColor = System.Drawing.Color.Black;
+            this.BackupSavesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackupSavesList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BackupSavesList.ForeColor = System.Drawing.Color.White;
             this.BackupSavesList.FormattingEnabled = true;
             this.BackupSavesList.Location = new System.Drawing.Point(3, 3);
             this.BackupSavesList.Name = "BackupSavesList";
-            this.BackupSavesList.Size = new System.Drawing.Size(246, 286);
+            this.BackupSavesList.Size = new System.Drawing.Size(246, 285);
             this.BackupSavesList.TabIndex = 2;
             // 
             // ImportSaves
             // 
-            this.ImportSaves.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ImportSaves.Enabled = false;
             this.ImportSaves.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ImportSaves.ForeColor = System.Drawing.Color.White;
-            this.ImportSaves.Location = new System.Drawing.Point(3, 297);
+            this.ImportSaves.Location = new System.Drawing.Point(3, 335);
             this.ImportSaves.Name = "ImportSaves";
-            this.ImportSaves.Size = new System.Drawing.Size(246, 74);
+            this.ImportSaves.Size = new System.Drawing.Size(246, 34);
             this.ImportSaves.TabIndex = 3;
             this.ImportSaves.Text = "Import Saves";
             this.ImportSaves.UseVisualStyleBackColor = true;
+            this.ImportSaves.Visible = false;
             this.ImportSaves.Click += new System.EventHandler(this.ImportSaves_Click);
             // 
             // panel1
@@ -213,7 +212,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 413);
+            this.panel1.Size = new System.Drawing.Size(258, 411);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -228,7 +227,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(258, 413);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(258, 411);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -274,7 +273,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(252, 374);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(252, 372);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // NGP
@@ -283,7 +282,7 @@
             this.NGP.Enabled = false;
             this.NGP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.NGP.ForeColor = System.Drawing.Color.White;
-            this.NGP.Location = new System.Drawing.Point(3, 350);
+            this.NGP.Location = new System.Drawing.Point(3, 348);
             this.NGP.Name = "NGP";
             this.NGP.Size = new System.Drawing.Size(246, 21);
             this.NGP.TabIndex = 5;
@@ -297,7 +296,7 @@
             this.NG.Enabled = false;
             this.NG.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.NG.ForeColor = System.Drawing.Color.White;
-            this.NG.Location = new System.Drawing.Point(3, 323);
+            this.NG.Location = new System.Drawing.Point(3, 321);
             this.NG.Name = "NG";
             this.NG.Size = new System.Drawing.Size(246, 21);
             this.NG.TabIndex = 4;
@@ -310,7 +309,7 @@
             this.ExportSaves.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ExportSaves.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ExportSaves.ForeColor = System.Drawing.Color.White;
-            this.ExportSaves.Location = new System.Drawing.Point(3, 296);
+            this.ExportSaves.Location = new System.Drawing.Point(3, 294);
             this.ExportSaves.Name = "ExportSaves";
             this.ExportSaves.Size = new System.Drawing.Size(246, 21);
             this.ExportSaves.TabIndex = 3;
@@ -325,6 +324,7 @@
             // 
             // tableLayoutPanel8
             // 
+            this.tableLayoutPanel8.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel1, 0, 1);
@@ -337,12 +337,12 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 271F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(534, 726);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(534, 724);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::RE3RemakeSaveSwapper.Properties.Resources.RE3BG2;
+            this.pictureBox1.BackgroundImage = global::RE3RemakeSaveSwapper.Properties.Resources.RE3Display;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -357,7 +357,7 @@
             this.panel3.Controls.Add(this.linkLabel1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 699);
+            this.panel3.Location = new System.Drawing.Point(3, 697);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(528, 24);
             this.panel3.TabIndex = 5;
@@ -366,7 +366,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel1.Location = new System.Drawing.Point(242, -1);
+            this.linkLabel1.Location = new System.Drawing.Point(242, -2);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(102, 13);
             this.linkLabel1.TabIndex = 1;
@@ -378,20 +378,36 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(183, -1);
+            this.label1.Location = new System.Drawing.Point(183, -2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Created By:";
+            // 
+            // SwapSave
+            // 
+            this.SwapSave.Enabled = false;
+            this.SwapSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SwapSave.ForeColor = System.Drawing.Color.White;
+            this.SwapSave.Location = new System.Drawing.Point(3, 294);
+            this.SwapSave.Name = "SwapSave";
+            this.SwapSave.Size = new System.Drawing.Size(246, 35);
+            this.SwapSave.TabIndex = 4;
+            this.SwapSave.Text = "Swap Save";
+            this.SwapSave.UseVisualStyleBackColor = true;
+            this.SwapSave.Click += new System.EventHandler(this.SwapSave_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(534, 726);
+            this.BackgroundImage = global::RE3RemakeSaveSwapper.Properties.Resources.RE3BG3;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(534, 724);
             this.Controls.Add(this.tableLayoutPanel8);
             this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Resident Evil 3 Remake Save Backup Tool";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -421,7 +437,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.ComboBox Difficulty;
+        private System.Windows.Forms.ComboBox SaveSets;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.ListBox BackupSavesList;
         private System.Windows.Forms.Button ImportSaves;
@@ -439,6 +455,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SwapSave;
     }
 }
 
