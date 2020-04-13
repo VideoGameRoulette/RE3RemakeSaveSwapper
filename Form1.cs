@@ -17,7 +17,7 @@ namespace RE3RemakeSaveSwapper
         public int SaveCount { get; private set; }
         public int BackupSaveCount { get; private set; }
 
-        OpenFileDialog ofd = new OpenFileDialog();
+        FolderBrowserDialog fbd = new FolderBrowserDialog();
 
         //FORM INIT
         public Form1()
@@ -121,25 +121,42 @@ namespace RE3RemakeSaveSwapper
         //FORM FUNCTIONS
         public bool GetSaveFile()
         {
+
             if (SaveFolder == null)
             {
+
                 if (Directory.Exists("C:\\Steam\\userdata"))
                 {
                     return OpenSaveDirectory("C:\\Steam\\userdata");
                 }
+
+                else if (Directory.Exists("D:\\Steam\\userdata"))
+                {
+                    return OpenSaveDirectory("D:\\Steam\\userdata");
+                }
+
+                else if (Directory.Exists("E:\\Steam\\userdata"))
+                {
+                    return OpenSaveDirectory("E:\\Steam\\userdata");
+                }
+
                 else if (Directory.Exists("C:\\Program Files (x86)\\Steam\\userdata"))
                 {
                     return OpenSaveDirectory("C:\\Program Files (x86)\\Steam\\userdata");
                 }
+
                 else
                 {
-                    return false;
+                    return ChooseFolder();
                 }
+
             }
+
             else
             {
                 return true;
             }
+
         }
 
         public bool OpenSaveDirectory(string currentDirectory)
@@ -155,6 +172,32 @@ namespace RE3RemakeSaveSwapper
                 }
             }
             return false;
+        }
+
+        public bool ChooseFolder()
+        {
+            var result = MessageBox.Show("Error Finding Steam userdata! Would you like to set manually? ex. C:\\Program Files (x86)\\Steam\\userdata", "Steam Userdata Error");
+
+            if (result == DialogResult.OK)
+            {
+                result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    return OpenSaveDirectory(fbd.SelectedPath);
+                }
+
+                else
+                {
+                    return ChooseFolder();
+                }
+
+            }
+
+            else
+            {
+                return false;
+            }
         }
 
         void BackupNGP(string sourceDir, string targetDir)
