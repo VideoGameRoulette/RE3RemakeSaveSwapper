@@ -42,17 +42,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.OpenFolder = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.NGP = new System.Windows.Forms.Button();
             this.NG = new System.Windows.Forms.Button();
             this.ExportSaves = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.OpenFolder = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -151,6 +151,7 @@
             this.Difficulty.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Difficulty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.Difficulty.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Difficulty.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Difficulty.ForeColor = System.Drawing.Color.White;
             this.Difficulty.FormattingEnabled = true;
             this.Difficulty.Items.AddRange(new object[] {
@@ -163,6 +164,7 @@
             this.Difficulty.Name = "Difficulty";
             this.Difficulty.Size = new System.Drawing.Size(246, 21);
             this.Difficulty.TabIndex = 0;
+            this.Difficulty.Text = "ASSIST";
             // 
             // tableLayoutPanel7
             // 
@@ -246,6 +248,18 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(252, 27);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // OpenFolder
+            // 
+            this.OpenFolder.BackgroundImage = global::RE3RemakeSaveSwapper.Properties.Resources.files;
+            this.OpenFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.OpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.OpenFolder.Location = new System.Drawing.Point(228, 3);
+            this.OpenFolder.Name = "OpenFolder";
+            this.OpenFolder.Size = new System.Drawing.Size(21, 21);
+            this.OpenFolder.TabIndex = 1;
+            this.OpenFolder.UseVisualStyleBackColor = true;
+            this.OpenFolder.Click += new System.EventHandler(this.OpenFolder_Click);
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -328,18 +342,6 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(534, 741);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
-            // OpenFolder
-            // 
-            this.OpenFolder.BackgroundImage = global::RE3RemakeSaveSwapper.Properties.Resources.files;
-            this.OpenFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.OpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.OpenFolder.Location = new System.Drawing.Point(228, 3);
-            this.OpenFolder.Name = "OpenFolder";
-            this.OpenFolder.Size = new System.Drawing.Size(21, 21);
-            this.OpenFolder.TabIndex = 1;
-            this.OpenFolder.UseVisualStyleBackColor = true;
-            this.OpenFolder.Click += new System.EventHandler(this.OpenFolder_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::RE3RemakeSaveSwapper.Properties.Resources.RE3BG2;
@@ -362,16 +364,6 @@
             this.panel3.Size = new System.Drawing.Size(528, 24);
             this.panel3.TabIndex = 5;
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(183, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Created By:";
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -383,6 +375,16 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "VideoGameRoulette";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(183, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Created By:";
             // 
             // Form1
             // 

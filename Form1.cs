@@ -11,7 +11,7 @@ namespace RE3RemakeSaveSwapper
     {
         readonly string SteamAppID = "952060";
         readonly string BackupFolder = $"{Application.StartupPath}\\Backup\\";
-        readonly string NewGameData = $"{Application.StartupPath}\\NewGame\\";
+        readonly string NewGameData = $"{Application.StartupPath}\\Resources\\";
         readonly string NewGamePlusData = $"{Application.StartupPath}\\NewGamePlus\\";
         public string SaveFolder { get; private set; }
         public int SaveCount { get; private set; }
@@ -23,6 +23,15 @@ namespace RE3RemakeSaveSwapper
         public Form1()
         {
             InitializeComponent();
+            if (!Directory.Exists(BackupFolder))
+            {
+                Directory.CreateDirectory(BackupFolder);
+                Directory.CreateDirectory($"{BackupFolder}ASSIST");
+                Directory.CreateDirectory($"{BackupFolder}STANDARD");
+                Directory.CreateDirectory($"{BackupFolder}HARDCORE");
+                Directory.CreateDirectory($"{BackupFolder}NIGHTMARE");
+                Directory.CreateDirectory($"{BackupFolder}INFERNO");
+            }
             if (!Directory.Exists(NewGamePlusData))
             {
                 var result = MessageBox.Show("No New Game + Data Found Backup Data?");
@@ -182,21 +191,22 @@ namespace RE3RemakeSaveSwapper
         //FORM UPDATE FUNCTIONS
         void UpdateUI()
         {
-            int check1 = Directory.GetFiles(SaveFolder).Length;
-            int check2 = Directory.GetFiles($"{BackupFolder}{Difficulty.Text}").Length;
-
-            if (check1 != SaveCount)
+            if (SaveFolder != null)
             {
-                SaveCount = check1;
-                UpdateSteamList();
-            }
+                int check1 = Directory.GetFiles(SaveFolder).Length;
+                int check2 = Directory.GetFiles($"{BackupFolder}{Difficulty.Text}").Length;
+                if (check1 != SaveCount)
+                {
+                    SaveCount = check1;
+                    UpdateSteamList();
+                }
 
-            else if (check2 != BackupSaveCount)
-            {
-                BackupSaveCount = check2;
-                UpdateBackupList();
+                else if (check2 != BackupSaveCount)
+                {
+                    BackupSaveCount = check2;
+                    UpdateBackupList();
+                }
             }
-
         }
 
         void UpdateSteamList()
